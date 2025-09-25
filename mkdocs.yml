@@ -1,5 +1,6 @@
 site_name: Tech Notes
 site_url: https://marconetto.github.io/technotes
+repo_url: https://github.com/marconetto/technotes
 markdown_extensions:
   - attr_list
   - pymdownx.highlight:
