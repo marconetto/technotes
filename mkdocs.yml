@@ -1,0 +1,4 @@
+site_name: Tech Notes
+site_url: https://marconetto.github.io/technotes
+theme:
+  name: material
