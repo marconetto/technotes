@@ -37,3 +37,10 @@ theme:
         name: Switch to dark mode
       primary: indigo
       accent: indigo
+nav:
+  - HPC:
+      - Tool A: hpc/tool1.md
+      - Tool B: hpc/tool2.md
+  - Containers:
+      - Tool 1: containers/tool1.md
+      - Tool 2: containers/tool2.md
