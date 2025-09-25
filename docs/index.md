@@ -1,17 +1,15 @@
-# Welcome to MkDocs
+# TechNotes
 
-t1 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+I have a few code samples, walkthroughs, projects, experiments, links, and
+general notes that have been spread into multiple git repositories. I needed
+some more structure to see all this content myself, which can also be helpful to
+someone else. So I've decided to create this repo to serve as a hub for this
+content. Things here are not up-to-date, have no warranty, etc...
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Some topics here are:
+- HPC
+- Containers
+- Analytics / ML
+- Scripts / linux
+- Distributed systems in general
+- Projects
