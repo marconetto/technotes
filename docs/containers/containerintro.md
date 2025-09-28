@@ -49,18 +49,10 @@ print("Hello, world from Docker!")
 ```
 
 Create this `Dockerfile`:
-```
-# Use official Python image
-FROM python:3.12-slim
 
-# Set working directory
-WORKDIR /app
 
-# Copy source code
-COPY app.py .
-
-# Run the script
-CMD ["python", "app.py"]
+```dockerfile title="Dockerfile"
+--8<-- "docs/containers/containerintro/Dockerfile"
 ```
 
 Run:
