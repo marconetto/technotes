@@ -1,6 +1,8 @@
-site_name: Tech Notes
+site_name: Technotes
 site_url: https://marconetto.github.io/technotes
 repo_url: https://github.com/marconetto/technotes
+plugins:
+  - awesome-pages
 markdown_extensions:
   - attr_list
   - pymdownx.highlight:
@@ -14,8 +16,10 @@ theme:
   icon:
     logo: material/atom
   features:
-    - navigation.tabs
     - navigation.sections
+    - navigation.expand # keeps all sections expanded
+    - navigation.indexes # (optional) use index.md as section landing page
+    - navigation.override
     - toc.integrate
     - navigation.top
     - search.suggest
@@ -37,10 +41,3 @@ theme:
         name: Switch to dark mode
       primary: indigo
       accent: indigo
-nav:
-  - HPC:
-      - Tool A: hpc/tool1.md
-      - Tool B: hpc/tool2.md
-  - Containers:
-      - Tool 1: containers/tool1.md
-      - Tool 2: containers/tool2.md
