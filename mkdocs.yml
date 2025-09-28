@@ -1,8 +1,6 @@
 site_name: Technotes
 site_url: https://marconetto.github.io/technotes
 repo_url: https://github.com/marconetto/technotes
-plugins:
-  - awesome-pages
 markdown_extensions:
   - attr_list
   - pymdownx.highlight:
