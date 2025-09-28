@@ -1,6 +1,8 @@
 site_name: Technotes
 site_url: https://marconetto.github.io/technotes
 repo_url: https://github.com/marconetto/technotes
+extra:
+  generator: false
 markdown_extensions:
   - attr_list
   - pymdownx.highlight:
