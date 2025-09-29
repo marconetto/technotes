@@ -55,7 +55,8 @@ localhost ansible_connection=local
 ```
 
 
-Create playbook file (`simple.yml`):
+Create playbook file (`simple.yml`). This is a playbook with a single play and
+three tasks.
 
 ```yaml title="Simple"
 --8<-- "docs/misc/ansible/simple.yml"
