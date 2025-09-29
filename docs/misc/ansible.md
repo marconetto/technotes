@@ -26,14 +26,14 @@ If Ansible is not available, one could use:
 
 ## Major components
 
-- Inventory: A list of machines (hosts) Ansible manages.
-- Modules: Small, reusable programs that perform one action (install a package, copy a file, manage a service, etc.).
-- Tasks: Single steps executed on target hosts; each task calls a module with parameters.
-- Plays: A mapping that says “run these tasks on these hosts”.
-- Playbooks: YAML files containing one or more plays. They describe how and which order, at what time and where, and what modules should be executed. It orchestrates the modules' execution.
-- Handlers: Special tasks executed only when notified by other tasks (useful for actions like restarting a service after config change).
-- Roles: Redistributable units of organization that allow users to share automation code easier.
-- Variables: Key–value pairs to parametrize playbooks, templates, and roles.
+- **Inventory:** A list of machines (hosts) Ansible manages.
+- **Modules:** Small, reusable programs that perform one action (install a package, copy a file, manage a service, etc.).
+- **Tasks:** Single steps executed on target hosts; each task calls a module with parameters.
+- **Plays:** A mapping that says “run these tasks on these hosts”.
+- **Playbooks:** YAML files containing one or more plays. They describe how and which order, at what time and where, and what modules should be executed. It orchestrates the modules' execution.
+- **Handlers:** Special tasks executed only when notified by other tasks (useful for actions like restarting a service after config change).
+- **Roles:** Redistributable units of organization that allow users to share automation code easier.
+- **Variables:** Key–value pairs to parametrize playbooks, templates, and roles.
 
 
 ## Simple test VM
@@ -57,23 +57,11 @@ localhost ansible_connection=local
 
 Create playbook file (`simple.yml`):
 
-```yaml
-- name: Simple Ansible test on AlmaLinux
-  hosts: local
-  connection: local
-  tasks:
-    - name: Gather system facts
-      setup:
-
-    - name: Create a test file
-      copy:
-        dest: /tmp/ansible_hello.txt
-        content: "Hello from Ansible at {{ ansible_date_time.iso8601 }}\n"
-
-    - name: Show hostname
-      debug:
-        msg: "This VM's hostname is {{ ansible_hostname }}"
+```yaml title="Simple"
+--8<-- "docs/misc/ansible/simple.yml"
 ```
+
+
 
 
 Run the line below and the file in `/tmp/` should be created.
