@@ -72,7 +72,8 @@ ansible-playbook -i inventory simple.yml
 
 
 If one wants to use multiple machines, replace 'hosts: local' with 'hosts: all'
-in the `simple.yml` and update the inventory with the list of ip addresses.
+in the `simple.yml` and update the inventory with the list of ip addresses. Also
+remove `connection: local`.
 
 
 ## Further notes
