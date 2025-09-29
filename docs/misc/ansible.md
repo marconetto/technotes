@@ -57,7 +57,7 @@ localhost ansible_connection=local
 
 Create playbook file (`simple.yml`):
 
-```
+```yaml
 - name: Simple Ansible test on AlmaLinux
   hosts: local
   connection: local
