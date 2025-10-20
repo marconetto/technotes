@@ -33,6 +33,7 @@ docker build -t mlperf/single_stage_detector .
 docker run --rm -it --gpus=all --ipc=host -v $MYDATA:/datasets/open-images-v6-mlperf mlperf/single_stage_detector bash
 
 # inside the container:
+# apt-get update ; apt-get install vim -y
 # sed -i '0,/\${SLURM_LOCALID-}/s//${SLURM_LOCALID:-0}/' run_and_time.sh
 # update config_DGXA100_001x08x032.sh
 # DGXNGPU=1, DGXSOCKETCORES=20, DGXNSOCKET=1, DGXHT=2
@@ -47,6 +48,9 @@ docker run --rm -it --gpus=all --ipc=host -v $MYDATA:/datasets/open-images-v6-ml
 # fix: coco_eval.py
 # # Old line:
 # import torch._six
-
-# Replace with
-#import collections.abc as container_abcs
+# #Replace with
+# import collections.abc as container_abcs
+#
+# pip3 install mlperf_logging
+# pip3 install pycocotools
+# ./run_and_time.sh
