@@ -1,4 +1,4 @@
-# MLPerf (WIP)
+# MLPerf
 
 MLPerf is an open, industry-standard benchmark suite for measuring machine learning performance.
 It’s maintained by the MLCommons consortium (which includes NVIDIA, Google, Intel, and others). MLPerf is primarily categorized by two major types of ML processes: training and inference. There are also specialized benchmarks for specific hardware and workloads. Original documents describing MLPerf can be found here: [MLPerf Training](https://arxiv.org/pdf/1910.01500) and [MLPerf Inference](https://arxiv.org/pdf/1911.02549). Those are interesting to understand some of the key motivations behind these benchmarks, including the uniqueness of ML/DL workloads w.r.t. benchmarking.
