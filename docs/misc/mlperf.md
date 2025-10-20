@@ -31,6 +31,22 @@ In this example we assume we have a VM in azure with SKU `Standard_NC40ads_H100_
 --8<-- "docs/misc/mlperf/single_stage_detector.sh"
 ```
 
+Once run script is started, output should be:
+
+```
+Epoch: [0]  [    0/36571]  eta: 1 day, 20:19:44  lr: 0.000000  loss: 2.2699 (2.2699)  classification: 1.5590 (1.5590)  bbox_reg
+ression: 0.7109 (0.7109)  time: 4.3637  data: 2.2989  max mem: 51676
+Epoch: [0]  [   20/36571]  eta: 6:17:02  lr: 0.000000  loss: 2.1944 (2.2521)  classification: 1.4886 (1.5371)  bbox_regression:
+ 0.7036 (0.7150)  time: 0.4317  data: 0.0003  max mem: 52125
+Epoch: [0]  [   40/36571]  eta: 5:20:59  lr: 0.000000  loss: 2.1934 (2.2440)  classification: 1.4949 (1.5292)  bbox_regression:
+ 0.6956 (0.7148)  time: 0.4309  data: 0.0003  max mem: 52125
+Epoch: [0]  [   60/36571]  eta: 5:03:05  lr: 0.000000  loss: 2.2322 (2.2630)  classification: 1.5102 (1.5478)  bbox_regression:
+ 0.7024 (0.7151)  time: 0.4384  data: 0.0004  max mem: 52125
+.
+.
+.
+```
+
 
 ## Multiple VMs
 
