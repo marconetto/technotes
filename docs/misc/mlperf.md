@@ -23,22 +23,21 @@ One can use MLPerf results to: (i) Compare hardware (e.g., GPU vs CPU); (ii) Tun
 
 ### Training
 
-Let's start with two benchmarks on a single VM:
-
-- ResNet-50 (Image Classification) – CNN training on ImageNet
-- BERT (Natural Language Processing) – Transformer training on SQuAD
+Example: Single Stage Detector.
 
 In this example we assume we have a VM in azure with SKU `Standard_NC40ads_H100_v5` and image `almalinux:almalinux-hpc:8_10-hpc-gen2:latest`. Once machine is provisioned, check if gpus+cuda is detected via: `nvidia-smi`.
 
-Clone mlperf training repo:
-
-```
-cd ~
-git clone https://github.com/mlcommons/training.git mlperf-training
-cd mlperf-training
+```bash title="prepmlperf"
+--8<-- "docs/misc/mlperf/single_stage_detector.sh"
 ```
 
 
+## Multiple VMs
+
+Similar to single VM but a cluster needs to be provision and parameters related
+to SLURM need to be adjusted. See details
+[HERE](https://github.com/mlcommons/training/tree/master/single_stage_detector).
 
 
-### Inference
+
+
