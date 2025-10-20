@@ -18,6 +18,7 @@ have instructions that are targetted to the host and to the docker container.
 ## Alternatives
 
 If Ansible is not available, one could use:
+
 - **Shell scripts** with `ssh` and `scp` for manual automation;
 - **Configuration management tools** like **Puppet** or  **Chef** (these often require agents on target mmachines);
 - **Cloud-native tools** such as AWS CloudFormation, Terraform, or Azure Resource Manager (for infrastructure provisioning).
