@@ -40,7 +40,15 @@ stress --cpu 4 --timeout 60
 ```
 
 
+Alternatively, one can import dashboards:
+
+```json title="cpu"
+--8<-- "docs/misc/grafana/cpu_dashboard.json"
+```
+
+```json title="cpuanddisk"
+--8<-- "docs/misc/grafana/cpu_disk_dashboard.json"
+```
 
 
-# 100 * (1 - avg(rate(node_cpu_seconds_total{mode="idle"}[2m])))
 
