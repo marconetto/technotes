@@ -16,6 +16,8 @@ Some examples of models are: GPT-4, Claude, and Mistral.
 
 #### OpenAI CLI
 
+Installs the [OpenAI Python client library](https://github.com/openai/openai-python); which are ysed to interact with OpenAI models (e.g. gpt-3.5, gpt-4, etc).
+
 ```
 pip3 install openai
 ```
@@ -42,7 +44,7 @@ openai api chat.completions.create -m gpt-3.5-turbo -g user "Hello, world"
 
 #### Gemini CLI
 
-(Gemini)[https://github.com/google-gemini/gemini-cli/blob/main/README.md] is a large language and multimodal model built by Google DeepMind.
+[Gemini](https://github.com/google-gemini/gemini-cli/blob/main/README.md) is a large language and multimodal model built by Google DeepMind.
 
 It can understand and generate: Text (like chat or code), images, audio, video, and structured data.
 
