@@ -39,3 +39,29 @@ Then execute:
 ```
 openai api chat.completions.create -m gpt-3.5-turbo -g user "Hello, world"
 ```
+
+#### Gemini CLI
+
+(Gemini)[https://github.com/google-gemini/gemini-cli/blob/main/README.md] is a large language and multimodal model built by Google DeepMind.
+
+It can understand and generate: Text (like chat or code), images, audio, video, and structured data.
+
+
+```
+brew install gemini-cli
+```
+
+Starting gemini by selecting authentication method.
+
+```
+gemini
+```
+
+After this is done, one can ask questions there in an interactive session.
+
+One can also use `-p` (prompt).
+
+```
+gemini -p "what was the most common programming language in the 90s"
+```
+
