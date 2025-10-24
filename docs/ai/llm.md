@@ -48,6 +48,8 @@ openai api chat.completions.create -m gpt-3.5-turbo -g user "Hello, world"
 
 It can understand and generate: Text (like chat or code), images, audio, video, and structured data.
 
+Here are the steps to install and run the client that interacts with the model
+host in the cloud.
 
 ```
 brew install gemini-cli
@@ -66,4 +68,43 @@ One can also use `-p` (prompt).
 ```
 gemini -p "what was the most common programming language in the 90s"
 ```
+
+#### Ollama
+
+[Ollama](https://ollama.com/), which statns for Ollama stands for (Omni-Layer
+Learning Language Acquisition Model), runs LLMs locally (like Llama 3, Mistral,
+Phi-4, etc.) with GPU/CPU acceleration; so need to use cloud to run queries to
+a model.
+
+
+
+```
+brew install ollama
+ollama serve
+ollama pull mistral
+
+```
+
+There are several ways to run/interact with the model.
+
+
+```
+# interactive mode
+ollama run mistral
+
+# query as parameter
+ollama run mistral "largest country in the planet?"
+
+# or use here-document
+ollama run mistral <<'EOF'
+largest country in the planet?
+EOF
+
+# via http request
+curl http://localhost:11434/api/generate -d '{
+  "model": "mistral",
+  "prompt": "largest country in the planet?"
+}'
+```
+
 
