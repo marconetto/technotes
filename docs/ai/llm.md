@@ -108,3 +108,20 @@ curl http://localhost:11434/api/generate -d '{
 ```
 
 
+#### OpenRounter
+
+[OpenRouter](https://openrouter.ai/) is a unified API gateway for multiple LLMs, including Claude, Mistral, and others. It is a bridge that lets one call different LLMs from one interface — via CLI, Python, or HTTP — without needing separate SDKs or accounts for each model.
+
+```
+brew install node
+npm install -g @letuscode/openrouter-cli
+export OPENROUTER_API_KEY="<your key>"
+openrouter test
+
+# select model
+openrouter init
+
+# ask question
+openrouter   ask "largest country in the planet"
+```
+
