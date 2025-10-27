@@ -125,3 +125,37 @@ openrouter init
 openrouter   ask "largest country in the planet"
 ```
 
+
+
+#### Hugging Face
+
+Hugging Face has a [CLI](https://huggingface.co/docs/huggingface_hub/main/en/guides/cli) to work with multiple LLMs.
+
+```
+pip3 install huggingface_hub
+
+# in case one wants to use the hf cli
+# export PATH="$PATH:$(python3 -c 'import sysconfig; print(sysconfig.get_path("scripts"))')"
+```
+
+Setup `HF_TOKEN`, save the following content as a python file and run it.
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://router.huggingface.co/v1",
+    api_key=os.environ["HF_TOKEN"],
+)
+
+completion = client.chat.completions.create(
+    model="openai/gpt-oss-120b:cerebras",
+    messages=[{"role": "user", "content": "What is the capital of France?"}],
+)
+
+print(completion.choices[0].message)
+```
+
+
+
