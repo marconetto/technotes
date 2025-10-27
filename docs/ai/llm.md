@@ -158,4 +158,18 @@ print(completion.choices[0].message)
 ```
 
 
+Or using CLI:
+
+```bash
+curl https://router.huggingface.co/v1/chat/completions \
+  -H "Authorization: Bearer $HF_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-oss-120b:cerebras",
+    "messages": [
+      {"role": "user", "content": "What is the capital of France?"}
+    ]
+  }' | jq -r '.choices[0].message.content'
+```
+
 
