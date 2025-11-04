@@ -26,28 +26,28 @@ Kubernetes was designed with several goals in mind:
 
 1. Automated Deployment and Scaling
 
-- Automatically deploy containerized applications across nodes.
-- Scale applications up or down based on demand.
+    - Automatically deploy containerized applications across nodes.
+    - Scale applications up or down based on demand.
 
 2. Self-Healing
 
-- Automatically restarts failed containers.
-- Replaces or reschedules containers if nodes die.
-- Kills containers that don't respond to health checks.
+    - Automatically restarts failed containers.
+    - Replaces or reschedules containers if nodes die.
+    - Kills containers that don't respond to health checks.
 
 3. Service Discovery and Load Balancing
 
-- Automatically exposes containers using DNS names or IP addresses.
-- Distributes network traffic evenly across containers.
+    - Automatically exposes containers using DNS names or IP addresses.
+    - Distributes network traffic evenly across containers.
 
 4. Infrastructure Abstraction
 
-- Applications run the same way whether nodes are on-premises, in a cloud, or hybrid.
+    - Applications run the same way whether nodes are on-premises, in a cloud, or hybrid.
 
 5. Declarative Configuration and Automation
 
-- Users describe the desired state of the system (e.g., "3 replicas of my app") in YAML/JSON.
-- Kubernetes automatically ensures the system matches the desired state.
+    - Users describe the desired state of the system (e.g., "3 replicas of my app") in YAML/JSON.
+    - Kubernetes automatically ensures the system matches the desired state.
 
 
 ## Components
@@ -80,3 +80,16 @@ These are abstractions for managing containers:
 - ConfigMap / Secret: Stores configuration data or sensitive information for pods.
 - Namespace: Provides logical isolation of resources in a cluster.
 - Volume / Persistent Volume: Handles storage that persists beyond container lifetimes.
+
+
+
+## Example k8s on a single VM
+
+
+Provision a single VM (example via Azure services). In this example we have an
+almalinux VM being created. Once the VM is created, the following steps are used
+to run the master and node processes on that VM and run a simple hello world
+example.
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
