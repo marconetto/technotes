@@ -89,7 +89,155 @@ These are abstractions for managing containers:
 Provision a single VM (example via Azure services). In this example we have an
 almalinux VM being created. Once the VM is created, the following steps are used
 to run the master and node processes on that VM and run a simple hello world
-example.
+example. Here we won't be using `minikube`, but `kubeadm` to be more
+closer to a multi-node setup.
 
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
+The default behavior of a kubelet is to fail to start if swap memory is detected on a node. So it is recommended to disable swap:
+
+```
+sudo swapoff -a
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
+```
+
+
+Disable SELinux (Security-Enhanced Linux) to allow containers to access the host filesystem; for example, some cluster network plugins require that.
+
+```
+# Set SELinux in permissive mode (effectively disabling it; violations logged)
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+```
+
+```
+sudo dnf update -y
+```
+
+
+Update repos. Exclude is recommended to avoid these packages being updated with `dns update`.
+
+```
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.34/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.34/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+```
+
+
+- *kubeadm:* the command to bootstrap the cluster.
+- *kubelet:* the component that runs on all of the machines in the cluster and does things like starting pods and containers.
+- *kubectl:* the command line util to talk to the cluster.
+
+```
+sudo dnf install kubeadm kubelet kubectl --disableexcludes=kubernetes -y
+```
+
+Start `kubeadm`:
+
+```
+sudo kubeadm init \
+  --apiserver-advertise-address=$(hostname -I | awk '{print $1}') \
+  --pod-network-cidr=10.244.0.0/16
+```
+
+This command sets up the control plane and writes the admin’s kubeconfig file here (owned by root): `/etc/kubernetes/admin.conf`
+This file tells `kubectl`:
+
+- where to find the API server,
+- which user credentials to use,
+- what certificates to trust.
+
+
+To start the cluster:
+
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+If you run the following command, it will show the control-plane node is not
+ready as it requires a pod network plugin---Kubernetes depends on a CNI
+(Container Network Interface) plugin for inter-pod communication.
+
+```
+kubectl get nodes
+```
+
+
+```
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+kubectl -n kube-flannel get pods -o wide
+```
+
+After this is done the `kubectl get nodes` will show the control plane node as
+ready.
+
+```
+kubectl get nodes
+NAME          STATUS   ROLES           AGE   VERSION
+vmnetto3160   Ready    control-plane   42m   v1.34.1
+```
+
+One can also see all pods running:
+
+```
+kubectl get pods -A
+NAMESPACE      NAME                                  READY   STATUS    RESTARTS   AGE
+kube-flannel   kube-flannel-ds-hd7gw                 1/1     Running   0          11m
+kube-system    coredns-66bc5c9577-s2vpb              1/1     Running   0          52m
+kube-system    coredns-66bc5c9577-vnpb8              1/1     Running   0          52m
+kube-system    etcd-vmnetto3160                      1/1     Running   0          52m
+kube-system    kube-apiserver-vmnetto3160            1/1     Running   0          52m
+kube-system    kube-controller-manager-vmnetto3160   1/1     Running   0          52m
+kube-system    kube-proxy-v7kc6                      1/1     Running   0          52m
+kube-system    kube-scheduler-vmnetto3160            1/1     Running   0          52m
+```
+
+
+As we are running everything on a single VM, the following command would not be
+used; as it is for additional VMs. The `kubeadm init` command already starts
+`kubelet` on the node.
+
+```
+sudo kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+```
+
+
+To allow regular nodes to be scheduled in control-plane node (okay for single
+node tests).
+
+```
+# see the taint there in control-plane
+kubectl describe node vmnetto3160 | grep Taints
+
+# remove it
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
+
+
+Deplay a pod:
+
+```
+kubectl run nginx --image=nginx --restart=Never
+```
+
+
+
+### Appendix
+
+Check `kubelet` logs:
+
+```
+sudo journalctl -u kubelet -n 20 --no-pager
+```
+
+
+### References
+- <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
+- <https://kubernetes.io/docs/reference/networking/ports-and-protocols/>
