@@ -137,6 +137,13 @@ EOF
 sudo dnf install kubeadm kubelet kubectl --disableexcludes=kubernetes -y
 ```
 
+
+Check containerd is running:
+
+```
+sudo systemctl status containerd --no-pager
+```
+
 Start `kubeadm`:
 
 ```
@@ -228,6 +235,79 @@ kubectl run nginx --image=nginx --restart=Never
 ```
 
 
+## Example k8s on multi-node cluster
+
+Assuming there is a master node running (with all the steps above) and a new
+almalinux VM is available; here is what it takes to have that second VM join the
+k8s cluster as a worker node.
+
+- Disable swap (see above)
+- Install kubernetes package (see above)
+
+The use the join command (replace xxx with actual token/cert):
+```
+kubeadm join 10.31.0.4:6443 --token xxxxxx.xxxxxxxxxxxxxxxx \
+>         --discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+On the master node one should see the new worker node:
+
+```
+kubectl get nodes -o wide
+```
+
+
+### Test multi-node
+
+Or create a DaemonSet. Create a file:
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-ip-printer
+spec:
+  selector:
+    matchLabels:
+      app: node-ip-printer
+  template:
+    metadata:
+      labels:
+        app: node-ip-printer
+    spec:
+      containers:
+      - name: printer
+        image: busybox
+        command:
+          - sh
+          - -c
+          - |
+            echo "Node: $(hostname) Host IP: $NODE_IP"
+            sleep 3600
+        env:
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+      restartPolicy: Always
+```
+
+Run:
+
+```
+kubectl apply -f node-ip-printer.yaml
+```
+
+Check log
+```
+kubectl get pods -o wide
+kubectl logs <pod-name>
+```
+
+
+
+
+
 
 ### Appendix
 
@@ -236,6 +316,30 @@ Check `kubelet` logs:
 ```
 sudo journalctl -u kubelet -n 20 --no-pager
 ```
+
+
+If you lose the command to join the worker (by creating a new token):
+
+```
+kubeadm token create --print-join-command
+```
+
+To use existing one:
+
+```
+# get token
+sudo kubeadm token list
+
+# get discovery-token-ca-cert-hash
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | \
+openssl rsa -pubin -outform der 2>/dev/null | \
+openssl dgst -sha256 -hex | \
+sed 's/^.* //'
+```
+
+
+
+
 
 
 ### References
