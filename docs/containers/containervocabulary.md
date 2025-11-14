@@ -38,7 +38,7 @@ containers
 - Affinity – rules for preferred node placement.
 - Taint – marks a node to repel pods.
 - Toleration – allows pod to run on tainted nodes.
-- kubeclt - CLI for k8s clusters
+- kubeclt - CLI for k8s clusters. Communicates with API server
 
 
 
