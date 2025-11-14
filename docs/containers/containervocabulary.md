@@ -39,7 +39,7 @@ containers
 - Taint – marks a node to repel pods.
 - Toleration – allows pod to run on tainted nodes.
 - kubeclt - CLI for k8s clusters. Communicates with API server
-- kubelet - node agent that runs on every node and makes sure the containers and pods scheduled to that node are running correctly
+- kubelet - node agent that runs on every node and makes sure the containers and pods scheduled to that node are running correctly. It creates the pod, and then the container.
 
 
 
