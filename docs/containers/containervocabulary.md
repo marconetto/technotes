@@ -31,7 +31,7 @@ containers
 - API Server – entry point for all Kubernetes commands.
 - Scheduler – picks which node a pod runs on.
 - Controller Manager – ensures desired state is maintained.
-- etcd – key-value store for cluster state.
+- etcd – key-value store for cluster state. Stores all configuration, desired state, and current state for every resource.
 - Namespace – logical grouping of resources.
 - Label – key-value metadata for selecting resources.
 - Node Selector – restricts pods to certain nodes.
