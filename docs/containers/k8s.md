@@ -304,7 +304,12 @@ kubectl get pods -o wide
 kubectl logs <pod-name>
 ```
 
+Get more info about the pod
 
+
+```
+kubectl describe pod <pod-name>
+```
 
 
 
