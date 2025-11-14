@@ -3,7 +3,8 @@
 Physical Machine – real hardware server.
 VM – virtual machine running its own OS.
 Node – a VM or machine that runs Kubernetes components or workloads.
-Pod – smallest deployable unit; one or more containers.
+Pod – smallest deployable unit; one or more containers. K8s manages pods not
+containers
 Cluster – group of nodes managed as one Kubernetes system.
 Control Plane Node – node running API server, scheduler, controllers.
 Worker Node – node that runs application pods.
