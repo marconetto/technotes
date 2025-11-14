@@ -345,3 +345,5 @@ sed 's/^.* //'
 ### References
 - <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
 - <https://kubernetes.io/docs/reference/networking/ports-and-protocols/>
+- tutorial (ubuntu install k8s 1.33):
+<https://www.youtube.com/watch?v=j3a2Sr2n8eQ>
