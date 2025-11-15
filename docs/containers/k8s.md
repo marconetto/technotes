@@ -311,6 +311,19 @@ Get more info about the pod
 kubectl describe pod <pod-name>
 ```
 
+To delete the pod
+
+```
+kubectl delete -f node-ip-printer.yaml
+```
+
+Or
+
+```
+kubectl delete pod <pod-name>
+```
+
+
 
 
 
