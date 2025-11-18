@@ -26,7 +26,7 @@ containers
 - Volume – storage attached to a pod.
 - PersistentVolume – actual physical/logical storage resource.
 - PersistentVolumeClaim – request for persistent storage.
-- ConfigMap – non-sensitive configuration data.
+- ConfigMap – object used to store configuration data (plain text) that applications need, separate from container images.
 - Secret – sensitive configuration data.
 - API Server – entry point for all Kubernetes commands.
 - Scheduler – picks which node a pod runs on.
