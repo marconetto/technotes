@@ -356,6 +356,25 @@ sed 's/^.* //'
 ```
 
 
+See system pods: `kubectl get pods -n kube-system`
+
+See namespaces: `kubectl get namespaces` or `kubectl get ns`
+
+
+See metrics:
+
+```
+# install metrics server
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+# see metrics on nodes
+kubectl top nodes
+
+# see metrics on pods
+kubectl top pods -A
+```
+
+
 
 
 

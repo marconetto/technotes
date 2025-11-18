@@ -38,6 +38,7 @@ containers
 - Affinity – rules for preferred node placement.
 - Taint – marks a node to repel pods.
 - Toleration – allows pod to run on tainted nodes.
+- Probes - health checks performed by the Kubelet on containers to monitor their state. Types: liveness probes (restart a container if it's unhealthy), readiness probes (ensure a container is ready to serve traffic before it receives any), and startup probes (for slow-starting containers to give them time to initialize before readiness and liveness checks begin).
 - kubeclt - CLI for k8s clusters. Communicates with API server
 - kubelet - node agent that runs on every node and makes sure the containers and pods scheduled to that node are running correctly. kubelet receives a pod spec from the control plane and instructs the container runtime to create the containers that make up that pod. The pod is created first (as an object in the Kubernetes API), and then the containers inside that pod are created on a node.
 
