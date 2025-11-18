@@ -324,6 +324,11 @@ kubectl delete pod <pod-name>
 ```
 
 
+Get inside a pod
+
+```
+kubectl exec -it <pod-name> -- sh
+```
 
 
 

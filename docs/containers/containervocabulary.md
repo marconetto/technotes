@@ -33,7 +33,8 @@ containers
 - Controller Manager – ensures desired state is maintained.
 - etcd – key-value store for cluster state. Stores all configuration, desired state, and current state for every resource.
 - Namespace – logical grouping of resources.
-- Label – key-value metadata for selecting resources.
+- Label – key-value metadata for selecting resources (e.g. pods, nodes, jobs,
+namespace, etc).
 - Node Selector – restricts pods to certain nodes.
 - Affinity – rules for preferred node placement.
 - Taint – marks a node to repel pods.
