@@ -12,7 +12,8 @@ containers
 - Worker Node – node that runs application pods.
 - Container – lightweight isolated environment for applications.
 - Container Runtime – engine that runs containers (containerd, CRI-O).
-- Deployment – manages desired number of pod replicas.
+- Deployment – manages desired number of pod replicas. It leverages ReplicaSet,
+  plus it supports Rolling updates (zero-downtime updates), rollbacks pausing/resuming updates, and revision history.
 - ReplicaSet – maintains a stable set of identical pods.
 - DaemonSet – runs exactly one pod per node.
 - Job – runs a finite/one-time workload.
