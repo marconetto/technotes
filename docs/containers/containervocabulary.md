@@ -17,6 +17,7 @@ containers
 - ReplicaSet – maintains a stable set of identical pods.
 - DaemonSet – runs exactly one pod per node.
 - Job – runs a finite/one-time workload.
+- JobSet - single object that defines several Jobs that must be treated as one workload. Supports: Multi-role distributed jobs, gang scheduling, and topology-aware scheduling.
 - CronJob – runs jobs on a schedule.
 - Service – stable networking endpoint to reach pods.
 - ClusterIP – internal-only service endpoint.
