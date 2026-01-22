@@ -389,3 +389,5 @@ kubectl top pods -A
 - <https://kubernetes.io/docs/reference/networking/ports-and-protocols/>
 - tutorial (ubuntu install k8s 1.33):
 <https://www.youtube.com/watch?v=j3a2Sr2n8eQ>
+- slurm vs k8s:
+<https://medium.com/nebius/slurm-vs-kubernetes-which-to-choose-for-your-ml-workloads-23e398ce7ece>
