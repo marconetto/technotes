@@ -1,4 +1,4 @@
-# AKS with Kueue for Batch Job Processing
+# AKS+Kueue
 
 This tutorial walks you through provisioning an AKS cluster with [Kueue](https://kueue.sigs.k8s.io/) for managing batch workloads with fair queuing, resource quotas, and priority scheduling.
 
