@@ -115,7 +115,7 @@ claude mcp get system-admin
 
 
 Once Claude CLI is started ask "terminate process 9999 using system-admin mcp".
-If one does not specify, claude will suggest some bash commands for doing so,
+If one does not specify the mcp, claude will suggest some bash commands for doing so,
 ignoring the mcp.
 
 
