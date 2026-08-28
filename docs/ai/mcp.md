@@ -61,8 +61,8 @@ fastmcp version
 
 Create `server.py` file inside `mcp-demo` folder
 
-```python title="Dockerfile"
---8<-- "docs/ai/mcp/mcp-demo/server.py"
+```python title="server.py"
+--8<-- "docs/ai/mcp-demo/server.py"
 ```
 
 
