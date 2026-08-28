@@ -1,0 +1,13 @@
+- name: Simple Ansible test on AlmaLinux
+  hosts: local
+  connection: local
+  tasks:
+    - name: Gather system facts
+      setup:
+    - name: Create a test file
+      copy:
+        dest: /tmp/ansible_hello.txt
+        content: "Hello from Ansible at {{ ansible_date_time.iso8601 }}\n"
+    - name: Show hostname
+      debug:
+        msg: "This VM's hostname is {{ ansible_hostname }}"
